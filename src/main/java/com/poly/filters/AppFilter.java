@@ -1,8 +1,10 @@
 package com.poly.filters;
 
 import jakarta.servlet.*;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AppFilter implements Filter {
     @Override
@@ -12,7 +14,10 @@ public class AppFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-
+        HttpServletRequest req = (HttpServletRequest) request;
+        if(req.getSession().getAttribute("services")==null){
+            req.getSession().setAttribute("services", new ArrayList<>());
+        }
     }
 
     @Override
