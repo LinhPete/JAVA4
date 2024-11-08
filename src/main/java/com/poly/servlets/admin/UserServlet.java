@@ -1,6 +1,7 @@
 package com.poly.servlets.admin;
 
-import com.poly.entities.User;
+import com.poly.services.Services;
+import com.poly.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,26 +14,30 @@ import java.io.IOException;
             "/admin/users/create", "/admin/users/update", "/admin/users/delete",
             "/admin/users/reset","/admin/users/filter"})
 public class UserServlet extends HttpServlet {
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Services services = (Services) req.getSession().getAttribute("services");
+        UserService userService = services.getUserService(req);
         String path = req.getServletPath();
         if (path.endsWith("users")) {
-
+            userService.loadPage();
         } else if(path.contains("filter")){
-
+            userService.filter();
         } else if (path.contains("page")) {
-
+            userService.changePage();
         } else if (path.contains("edit")) {
-
+            userService.edit();
         } else if (path.contains("create")) {
-
+            userService.createUser();
         } else if (path.contains("update")) {
-
+            userService.updateUser();
         } else if (path.contains("delete")) {
-
+            userService.deleteUser();
         } else if (path.contains("reset")) {
-
+            userService.resetForm();
         }
+        req.setAttribute("view", "/admin/user/user-layout.jsp");
         req.getRequestDispatcher("/admin/index.jsp").forward(req, resp);
     }
 }

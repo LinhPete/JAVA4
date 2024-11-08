@@ -22,6 +22,9 @@ public class FavoriteService{
         }
     }
 
+    public FavoriteService() {
+    }
+
     private void renderFavorites() {
         if(path.startsWith("/admin")){
             favorites = fm.selectAll();
