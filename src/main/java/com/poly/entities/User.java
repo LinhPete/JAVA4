@@ -5,9 +5,9 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @NamedQueries({
-        @NamedQuery(name = "User.filterByName", query = "select o from User o where o.fullname like :name"),
-        @NamedQuery(name = "User.filterByRole", query = "select o from User o where o.admin =:role"),
-        @NamedQuery(name = "User.filterByName&Role", query = "select o from User o where o.fullname like :name and o.admin =:role")
+        @NamedQuery(name = "User.filterByName", query = "select o from User o where o.fullname like ?1"),
+        @NamedQuery(name = "User.filterByRole", query = "select o from User o where o.admin =?1"),
+        @NamedQuery(name = "User.filterByName&Role", query = "select o from User o where o.fullname like ?1 and o.admin =?2")
 })
 @Entity
 @Table(name = "user")
