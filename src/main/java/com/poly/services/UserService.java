@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 
 public class UserService {
-    private final HttpServletRequest request;
-    private final HttpSession session;
+    private HttpServletRequest request;
+    private HttpSession session;
     private final UserManager um;
     private Map<Integer, List<User>> pageMap;
     private static final int FIRST_PAGE = 1;
@@ -22,6 +22,19 @@ public class UserService {
         this.request = request;
         session = request.getSession();
         um = new UserManager();
+        pageMap = (Map<Integer, List<User>>) session.getAttribute("users_pages");
+        if (pageMap == null) {
+            renderPageMap();
+        }
+    }
+
+    public UserService() {
+        um = new UserManager();
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+        session = request.getSession();
         pageMap = (Map<Integer, List<User>>) session.getAttribute("users_pages");
         if (pageMap == null) {
             renderPageMap();
