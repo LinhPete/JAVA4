@@ -12,6 +12,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
+    <style>
+        .pagination-container {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
 
@@ -44,40 +53,98 @@
 
 <div class="container mt-4">
     <h2 class="mb-4">Popular Videos</h2>
-
+    <!-- Video Grid (6 video in 3-column layout) -->
     <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Video Card 1 -->
         <div class="col">
-            <div class="card">
+            <div class="card h-100">
                 <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
                 <div class="card-body">
                     <h5 class="card-title">Video Title 1</h5>
                     <p class="card-text">Description of the video goes here.</p>
-                    <button class="btn btn-primary btn-sm">Play</button>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
+                </div>
+            </div>
+        </div>
+        <!-- Video Card 2 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 2</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
+                </div>
+            </div>
+        </div>
+        <!-- Video Card 3 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 3</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
+                </div>
+            </div>
+        </div>
+        <!-- Video Card 4 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 4</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
+                </div>
+            </div>
+        </div>
+        <!-- Video Card 5 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 5</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
+                </div>
+            </div>
+        </div>
+        <!-- Video Card 6 -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 6</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-primary btn-sm">Like</button>
+                    <button class="btn btn-success btn-sm">Share</button>
                 </div>
             </div>
         </div>
 
-        <div class="col">
-            <div class="card">
-                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
-                <div class="card-body">
-                    <h5 class="card-title">Video Title 2</h5>
-                    <p class="card-text">Another description.</p>
-                    <button class="btn btn-primary btn-sm">Play</button>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card">
-                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
-                <div class="card-body">
-                    <h5 class="card-title">Video Title 3</h5>
-                    <p class="card-text">Yet another description.</p>
-                    <button class="btn btn-primary btn-sm">Play</button>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
+<nav aria-label="...">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1">←</a>
+        </li>
+        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">2 <span class="sr-only"></span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">→</a>
+        </li>
+    </ul>
+</nav>
 </div>
 
 </body>
