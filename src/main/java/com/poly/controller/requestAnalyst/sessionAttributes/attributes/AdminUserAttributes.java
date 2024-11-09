@@ -1,20 +1,36 @@
-package com.poly.sessionAttributes;
+package com.poly.controller.requestAnalyst.sessionAttributes.attributes;
 
-import com.poly.entities.User;
-import com.poly.services.UserService;
+import com.poly.controller.requestAnalyst.sessionAttributes.AttributeContainer;
+import com.poly.modal.entities.User;
+import com.poly.modal.managers.UserManager;
 import jakarta.servlet.http.HttpServletRequest;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AdminUserAttributes {
+    private final AttributeContainer attributeContainer;
     private Map<Integer, List<User>> pageMap;
     private Integer currentPageNumber;
     private List<User> currentPage;
     private User editingUser;
     private String filterName;
     private Boolean filterRole;
+
+    public AdminUserAttributes(AttributeContainer attributeContainer) {
+        this.attributeContainer = attributeContainer;
+        UserManager userManager = new UserManager();
+        setPageMap(userManager.selectAllInPages(5));
+        setCurrentPageNumber(1);
+        setEditingUser(null);
+        setFilterName(null);
+        setFilterRole(null);
+    }
+
+    public void deploy(HttpServletRequest request) {
+        attributeContainer.setAdminUserAttributes(this);
+        attributeContainer.deploy(request);
+    }
 
     public Map<Integer, List<User>> getPageMap() {
         return pageMap;

@@ -8,16 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="sessionAttributes" scope="session" type="com.poly.sessionAttributes.AdminUserAttributes"/>
+<jsp:useBean id="session_container" scope="session" type="com.poly.controller.requestAnalyst.SessionContainer"/>
 
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
 
-<c:set var="currPageNumber" value="${sessionAttributes.currentPageNumber}"/>
-<c:set var="currPage" value="${sessionAttributes.currentPage}"/>
-<c:set var="pages" value="${sessionAttributes.pageMap}"/>
-<c:set var="filterName" value="${sessionAttributes.filterName}"/>
-<c:set var="filterRole" value="${sessionAttributes.filterRole}"/>
+<c:set var="currPageNumber" value="${session_container.attributeContainer.adminUserAttributes.currentPageNumber}"/>
+<c:set var="currPage" value="${session_container.attributeContainer.adminUserAttributes.currentPage}"/>
+<c:set var="pages" value="${session_container.attributeContainer.adminUserAttributes.pageMap}"/>
+<c:set var="filterName" value="${session_container.attributeContainer.adminUserAttributes.filterName}"/>
+<c:set var="filterRole" value="${session_container.attributeContainer.adminUserAttributes.filterRole}"/>
 
 <h2>Danh sách User</h2>
 <form action="${root}/filter" method="get">
@@ -90,7 +90,7 @@
                                         href="${root}/page/1">1</a>
         </li>
     </c:if>
-    <li class="page-item ${currPageNumber==users_pages.size()||users_pages.size()==0?'disabled':''}"><a
+    <li class="page-item ${currPageNumber==pages.size()||pages.size()==0?'disabled':''}"><a
             class="page-link"
             href="${root}/page/${currPageNumber+1}">Next</a>
     </li>

@@ -1,8 +1,6 @@
-package com.poly.managers;
+package com.poly.modal.managers;
 
-import com.poly.entities.Video;
-
-import java.util.Date;
+import com.poly.modal.entities.Video;
 
 public class VideoManager extends XManager<Video>{
 

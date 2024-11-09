@@ -1,7 +1,8 @@
-package com.poly.servlets.admin;
+package com.poly.controller.servlets.admin;
 
-import com.poly.services.Services;
-import com.poly.services.UserService;
+import com.poly.controller.requestAnalyst.ServiceContainer;
+import com.poly.controller.requestAnalyst.SessionContainer;
+import com.poly.controller.requestAnalyst.services.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Services services = (Services) req.getSession().getAttribute("services");
-        UserService userService = services.getUserService(req);
+        SessionContainer container = SessionContainer.retrieve(req);
+        UserService userService = container.getServiceContainer().getUserService(req);
         String path = req.getServletPath();
         if (path.endsWith("users")) {
             userService.loadPage();

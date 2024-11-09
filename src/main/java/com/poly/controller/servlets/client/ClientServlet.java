@@ -1,4 +1,4 @@
-package com.poly.servlets.client;
+package com.poly.controller.servlets.client;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
