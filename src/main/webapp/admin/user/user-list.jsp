@@ -8,34 +8,37 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="users_pages" scope="session" type="java.util.Map"/>
-<jsp:useBean id="curr_users_page_number" scope="session" type="java.lang.Integer"/>
+<jsp:useBean id="session_container" scope="session" type="com.poly.controller.requestAnalyst.SessionContainer"/>
 
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
 
-<c:set var="currPageNumber" value="${curr_users_page_number}"/>
-<c:set var="currPage" value="${sessionScope.curr_users_page}"/>
-<c:set var="pages" value="${users_pages}"/>
+<c:set var="currPageNumber" value="${session_container.attributeContainer.adminUserAttributes.currentPageNumber}"/>
+<c:set var="currPage" value="${session_container.attributeContainer.adminUserAttributes.currentPage}"/>
+<c:set var="pages" value="${session_container.attributeContainer.adminUserAttributes.pageMap}"/>
+<c:set var="filterName" value="${session_container.attributeContainer.adminUserAttributes.filterName}"/>
+<c:set var="filterRole" value="${session_container.attributeContainer.adminUserAttributes.filterRole}"/>
 
 <h2>Danh sách User</h2>
 <form action="${root}/filter" method="get">
     <div class="row">
         <div class="col-sm-8">
             <label class="form-label" for="name">Tên người dùng</label>
-            <input class="form-control" type="text" id="name" name="filter_name" value="${sessionScope.filter_name}" placeholder="Tìm kiếm tên người dùng..."/>
+            <input class="form-control" type="text" id="name" name="filter_name" value="${filterName}"
+                   placeholder="Tìm kiếm tên người dùng..."/>
         </div>
         <div class="col-sm-4">
             <label class="form-label" for="role">Loại người dùng</label>
             <select class="form-select" name="filter_role" id="role">
-                <option value="null" ${sessionScope.filter_role=='null'?'selected':''}>Tất cả</option>
-                <option value="true" ${sessionScope.filter_role=='true'?'selected':''}>Admin</option>
-                <option value="false" ${sessionScope.filter_role=='false'?'selected':''}>Khách hàng</option>
+                <option value="null" ${filterRole==null?'selected':''}>Tất cả</option>
+                <option value="true" ${filterRole==true?'selected':''}>Admin</option>
+                <option value="false" ${filterRole==false?'selected':''}>Khách hàng</option>
             </select>
         </div>
     </div>
     <button class="btn btn-primary mt-3" type="submit">Lọc</button>
 </form>
+
 <table class="table">
     <thead>
     <tr>
@@ -60,10 +63,10 @@
             </c:when>
             <c:otherwise>
                 <tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td><a class="btn btn-outline-primary" href="#" style="visibility: hidden">Edit</a></td>
                 </tr>
             </c:otherwise>
@@ -84,10 +87,11 @@
     </c:if>
     <c:if test="${pages.keySet()==null}">
         <li class="page-item active"><a class="page-link"
-                                                                         href="${root}/page/1">1</a>
+                                        href="${root}/page/1">1</a>
         </li>
     </c:if>
-    <li class="page-item ${currPageNumber==users_pages.size()||users_pages.size()==0?'disabled':''}"><a class="page-link"
-                                                                                 href="${root}/page/${currPageNumber+1}">Next</a>
+    <li class="page-item ${currPageNumber==pages.size()||pages.size()==0?'disabled':''}"><a
+            class="page-link"
+            href="${root}/page/${currPageNumber+1}">Next</a>
     </li>
 </ul>

@@ -1,4 +1,4 @@
-package com.poly.managers;
+package com.poly.modal.managers;
 
 import com.poly.utils.XJpa;
 import com.poly.utils.interfaces.TransactionOperation;

@@ -1,9 +1,6 @@
-package com.poly.managers;
+package com.poly.modal.managers;
 
-import com.poly.entities.Favorite;
-import com.poly.entities.User;
-
-import java.util.Date;
+import com.poly.modal.entities.Favorite;
 
 public class FavoriteManager extends XManager<Favorite> {
 

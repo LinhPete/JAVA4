@@ -9,8 +9,8 @@ public class XMessage {
     }
 
     private XMessage(String type, String content) {
-        this.type = type;
-        this.content = content;
+        setType(type);
+        setContent(content);
     }
 
     public String getType() {
