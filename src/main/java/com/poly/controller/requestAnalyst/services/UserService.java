@@ -1,46 +1,32 @@
-package com.poly.services;
+package com.poly.controller.requestAnalyst.services;
 
-import com.poly.entities.User;
-import com.poly.managers.UserManager;
-import com.poly.sessionAttributes.AdminUserAttributes;
+import com.poly.controller.requestAnalyst.SessionContainer;
+import com.poly.modal.entities.User;
+import com.poly.modal.managers.UserManager;
+import com.poly.controller.requestAnalyst.sessionAttributes.attributes.AdminUserAttributes;
 import com.poly.utils.XMessage;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
 
 public class UserService extends Service<UserManager> {
-    private HttpSession session;
     private AdminUserAttributes sessionAttributes;
-    private static final int FIRST_PAGE = 1;
 
     public UserService(HttpServletRequest request) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(request, UserManager.class);
-        session = request.getSession();
-        sessionAttributes = getSessionAttributes();
-        if (sessionAttributes == null) {
-            sessionAttributes = new AdminUserAttributes();
-            renderPageMap();
-            setCurrentPage(1);
-        }
+        sessionAttributes = retrieveAttributes();
     }
 
     @Override
     public void setRequest(HttpServletRequest request) {
         super.setRequest(request);
-        session = request.getSession();
-        sessionAttributes = (AdminUserAttributes) session.getAttribute("sessionAttributes");
-        if (sessionAttributes == null) {
-            sessionAttributes = new AdminUserAttributes();
-            renderPageMap();
-            setCurrentPage(1);
-        }
+        sessionAttributes = retrieveAttributes();
     }
 
     public void loadPage(){
-        session.removeAttribute("filter_name");
-        session.removeAttribute("filter_role");
+        sessionAttributes.setFilterName(null);
+        sessionAttributes.setFilterRole(null);
         renderPageMap();
         setCurrentPage(1);
     }
@@ -57,7 +43,7 @@ public class UserService extends Service<UserManager> {
         } else {
             sessionAttributes.setFilterRole(null);
         }
-        session.setAttribute("sessionAttributes", sessionAttributes);
+        sessionAttributes.deploy(request);
         renderPageMap();
         setCurrentPage(1);
     }
@@ -180,12 +166,12 @@ public class UserService extends Service<UserManager> {
 
     private void renderAllPageMap() {
         sessionAttributes.setPageMap(manager.selectAllInPages(5));
-        setSessionAttributes();
+        deployAttributes();
     }
 
     private void renderFilteredPageMap(String name, Boolean role) {
         sessionAttributes.setPageMap(manager.getFilteredPageMap(5, name, role));
-        setSessionAttributes();
+        deployAttributes();
     }
 
     private void setCurrentPage(int pageNumber) {
@@ -193,7 +179,7 @@ public class UserService extends Service<UserManager> {
             pageNumber--;
         }
         sessionAttributes.setCurrentPageNumber(pageNumber);
-        setSessionAttributes();
+        deployAttributes();
     }
 
     private int getCurrentPageNumber() {
@@ -202,15 +188,19 @@ public class UserService extends Service<UserManager> {
 
     private void setEditingUser(User user) {
         sessionAttributes.setEditingUser(user);
-        setSessionAttributes();
+        deployAttributes();
     }
 
-    private void setSessionAttributes(){
-        session.setAttribute("sessionAttributes", sessionAttributes);
+    private void deployAttributes(){
+        sessionAttributes.deploy(request);
     }
 
-    private AdminUserAttributes getSessionAttributes() {
-        return (AdminUserAttributes) session.getAttribute("sessionAttributes");
+    private AdminUserAttributes retrieveAttributes() {
+        SessionContainer container = SessionContainer.retrieve(request);
+        if(container == null) {
+            return null;
+        }
+        return container.getAttributeContainer().getAdminUserAttributes();
     }
 
 }

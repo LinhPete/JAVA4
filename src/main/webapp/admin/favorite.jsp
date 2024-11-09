@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="favorites" scope="session" type="java.util.List"/>
 <h2>Danh sách yêu thích</h2>
 <table class="table">
     <thead>

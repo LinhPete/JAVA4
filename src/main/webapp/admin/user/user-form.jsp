@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="sessionAttributes" scope="session" type="com.poly.sessionAttributes.AdminUserAttributes"/>
+<jsp:useBean id="session_container" scope="session" type="com.poly.controller.requestAnalyst.SessionContainer"/>
 
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
 
-<c:set var="user" value="${sessionAttributes.editingUser}"/>
+<c:set var="user" value="${session_container.attributeContainer.adminUserAttributes.editingUser}"/>
 <h2 class="text-center">Chi tiết người dùng</h2>
 <form method="post">
     <div class="my-3">

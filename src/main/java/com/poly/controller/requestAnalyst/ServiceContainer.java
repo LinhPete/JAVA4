@@ -1,14 +1,16 @@
-package com.poly.services;
+package com.poly.controller.requestAnalyst;
 
+import com.poly.controller.requestAnalyst.services.FavoriteService;
+import com.poly.controller.requestAnalyst.services.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class Services {
-    private UserService userService;
-    private FavoriteService favoriteService;
+public class ServiceContainer {
+    private final UserService userService;
+    private final FavoriteService favoriteService;
 
-    public Services(HttpServletRequest request) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public ServiceContainer(HttpServletRequest request) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         userService = new UserService(request);
         favoriteService = new FavoriteService(request);
     }

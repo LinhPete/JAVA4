@@ -1,7 +1,6 @@
-package com.poly.servlets.admin;
+package com.poly.controller.servlets.admin;
 
-import com.poly.services.FavoriteService;
-import com.poly.services.UserService;
+import com.poly.controller.requestAnalyst.services.FavoriteService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,7 +14,6 @@ import java.io.IOException;
         "/admin/favorites"})
 public class AdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private FavoriteService favoriteService = new FavoriteService();
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,7 +21,6 @@ public class AdminServlet extends HttpServlet {
         if (path.contains("home")) {
             req.setAttribute("view", "/admin/home.jsp");
         } else if (path.contains("favorites")) {
-            favoriteService.handleRequest();
             req.setAttribute("view", "/admin/favorite.jsp");
         }
         req.getRequestDispatcher("/admin/index.jsp").forward(req, resp);
