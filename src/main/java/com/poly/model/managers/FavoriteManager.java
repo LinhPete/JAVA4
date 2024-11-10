@@ -1,6 +1,6 @@
-package com.poly.modal.managers;
+package com.poly.model.managers;
 
-import com.poly.modal.entities.Favorite;
+import com.poly.model.entities.Favorite;
 
 public class FavoriteManager extends XManager<Favorite> {
 
