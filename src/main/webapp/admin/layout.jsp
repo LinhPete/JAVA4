@@ -35,13 +35,14 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white rounded-0 ${view=='/admin/user/user-layout.jsp'?'active':''}"
+            <a class="nav-link text-white rounded-0 ${view=='/admin/user/user.jsp'?'active':''}"
                href="${root}/users">
                 <i class="fa-solid fa-users"></i> Users
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white rounded-0" href="#">
+            <a class="nav-link text-white rounded-0 ${view=='/admin/video/video-list.jsp'?'active':''}"
+               href="${root}/videos">
                 <i class="fa-solid fa-photo-film"></i> Videos
             </a>
         </li>

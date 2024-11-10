@@ -1,7 +1,7 @@
-package com.poly.modal.managers;
+package com.poly.model.managers;
 
-import com.poly.modal.entities.User;
-import com.poly.modal.entities.Video;
+import com.poly.model.entities.User;
+import com.poly.model.entities.Video;
 import com.poly.utils.XJpa;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;

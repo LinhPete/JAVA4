@@ -26,12 +26,12 @@
             </div>
 
             <div class="col-lg-3 col-6">
-                <div class="card bg-info">
+                <div class="card bg-success">
                     <div class="card-header"><h3 class="text-center"><i class="fa-solid fa-photo-film"></i> Videos</h3>
                     </div>
                     <div class="card-body p-2">
                         <h1 class="card-title text-center">150</h1>
-                        <a href="#" class="card-link btn btn-info w-100">
+                        <a href="#" class="card-link btn btn-success w-100">
                             More info <i class="fas fa-arrow-circle-right ms-auto"></i>
                         </a>
                     </div>
@@ -39,11 +39,11 @@
             </div>
 
             <div class="col-lg-3 col-6">
-                <div class="card bg-info">
+                <div class="card bg-warning">
                     <div class="card-header"><h3 class="text-center"><i class="fa-solid fa-eye"></i> Views</h3></div>
                     <div class="card-body p-2">
                         <h1 class="card-title text-center">150</h1>
-                        <a href="#" class="card-link btn btn-info w-100">
+                        <a href="#" class="card-link btn btn-warning w-100">
                             More info <i class="fas fa-arrow-circle-right ms-auto"></i>
                         </a>
                     </div>
@@ -51,12 +51,12 @@
             </div>
 
             <div class="col-lg-3 col-6">
-                <div class="card bg-info">
+                <div class="card bg-danger">
                     <div class="card-header"><h3 class="text-center"><i class="fa-solid fa-thumbs-up"></i> Likes</h3>
                     </div>
                     <div class="card-body p-2">
                         <h1 class="card-title text-center">150</h1>
-                        <a href="#" class="card-link btn btn-info w-100">
+                        <a href="#" class="card-link btn btn-danger w-100">
                             More info <i class="fas fa-arrow-circle-right ms-auto"></i>
                         </a>
                     </div>

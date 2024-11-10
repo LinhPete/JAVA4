@@ -1,12 +1,9 @@
 package com.poly.controller.requestAnalyst.services;
 
-import com.poly.modal.entities.Favorite;
-import com.poly.modal.managers.FavoriteManager;
-import jakarta.servlet.http.HttpServlet;
+import com.poly.model.managers.FavoriteManager;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 
 public class FavoriteService extends Service<FavoriteManager> {
     private String path;

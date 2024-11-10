@@ -1,4 +1,4 @@
-package com.poly.modal.entities;
+package com.poly.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Video {
 
     public static Video newVideo(){
-        return new Video(new Date(), 0, true);
+        return new Video(new Date(),0, 0, true);
     }
 
     @Id
@@ -24,6 +24,7 @@ public class Video {
     private String ytCode;
     private String description;
     private Date postedDate;
+    private Integer views;
     private Integer likes;
     private Boolean active;
 
@@ -33,20 +34,22 @@ public class Video {
     public Video() {
     }
 
-    public Video(String id, String title, String poster, String ytCode, String description, Date postedDate, Integer likes, Boolean active, List<Favorite> favorites) {
+    public Video(String id, String title, String poster, String ytCode, String description, Date postedDate, Integer views, Integer likes, Boolean active, List<Favorite> favorites) {
         this.id = id;
         this.title = title;
         this.poster = poster;
         this.ytCode = ytCode;
         this.description = description;
         this.postedDate = postedDate;
+        this.views = views;
         this.likes = likes;
         this.active = active;
         this.favorites = favorites;
     }
 
-    public Video(Date postedDate, Integer likes, Boolean active) {
+    public Video(Date postedDate, Integer views, Integer likes, Boolean active) {
         this.postedDate = postedDate;
+        this.views = views;
         this.likes = likes;
         this.active = active;
     }
@@ -131,8 +134,18 @@ public class Video {
                 "YtCode: " + ytCode + "\n" +
                 "Description: " + description + "\n" +
                 "PostedDate: " + postedDate + "\n" +
+                "Views: " + views + "\n" +
                 "Likes: " + likes + "\n" +
                 "Active: " + active + "\n";
     }
 
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    public String getPosterPath(){return "/img/"+poster;}
 }
