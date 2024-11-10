@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/admin/home",
+@WebServlet({"/admin/dashboard",
 
         "/admin/favorites"})
 public class AdminServlet extends HttpServlet {
@@ -18,8 +18,8 @@ public class AdminServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getServletPath();
-        if (path.contains("home")) {
-            req.setAttribute("view", "/admin/home.jsp");
+        if (path.contains("dashboard")) {
+            req.setAttribute("view", "/admin/dashboard.jsp");
         } else if (path.contains("favorites")) {
             req.setAttribute("view", "/admin/favorite.jsp");
         }

@@ -36,7 +36,9 @@
             </select>
         </div>
     </div>
-    <button class="btn btn-primary mt-3" type="submit">Lọc</button>
+    <div class="text-end">
+        <button class="btn btn-primary mt-3" type="submit">Lọc</button>
+    </div>
 </form>
 
 <table class="table">
