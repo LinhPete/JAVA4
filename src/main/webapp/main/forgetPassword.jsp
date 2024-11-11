@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Update Account</title>
+    <title>Forgot Password</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="<%= request.getContextPath() %>/main/img/netflix-icon.png">
@@ -18,17 +18,13 @@
     <link href="<%= request.getContextPath() %>/main/css/osahan.css" rel="stylesheet"></head>
 <body>
 <div class="container mt-5 col-4 align-content-center">
-    <h3>Update Account Information</h3>
-    <form action="update-account" method="post">
+    <h3>Forget Password</h3>
+    <form action="forgot-password" method="post">
         <div class="mb-3">
-            <label for="fullname" class="form-label">Fullname</label>
-            <input type="text" class="form-control" id="fullname" name="fullname" value="Current Fullname" required>
+            <label for="email" class="form-label">Enter your registered email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
         </div>
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="user@example.com" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary content-center">Submit</button>
     </form>
 </div>
 <!-- jQuery and Bootstrap JS -->

@@ -6,7 +6,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="<%= request.getContextPath() %>/main/img/netflix-icon.png">
 
@@ -20,9 +19,6 @@
     <!-- Custom styles for this template-->
     <link href="<%= request.getContextPath() %>/main/css/osahan.css" rel="stylesheet">
 
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/main/vendor/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="<%= request.getContextPath() %>/main/vendor/owl-carousel/owl.theme.css">
 </head>
 <body>
 
@@ -43,29 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="video-card">
-                <div class="video-card-image">
-                    <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
-                    <a href="#"><img class="img-fluid" src="<%= request.getContextPath() %>/main/img/v1.png"
-                                     alt=""></a>
-                    <div class="time">3:50</div>
-                </div>
-                <div class="video-card-body">
-                    <div class="video-title">
-                        <a href="#">There are many variations of passages of Lorem</a>
-                    </div>
-                    <div class="video-page text-success">
-                        Education <a title="" data-placement="top" data-toggle="tooltip" href="#"
-                                     data-original-title="Verified"><i
-                            class="fas fa-check-circle text-success"></i></a>
-                    </div>
-                    <div class="video-view">
-                        1.8M views &nbsp;<i class="fas fa-calendar-alt"></i> 11 Months ago
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-xl-3 col-sm-6 mb-3">
             <div class="video-card">
                 <div class="video-card-image">
@@ -180,6 +154,7 @@
             </div>
         </div>
     </div>
+
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center pagination-sm mb-0">
             <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
@@ -190,42 +165,12 @@
         </ul>
     </nav>
 </div>
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="<%= request.getContextPath() %>/main/vendor/jquery/jquery.min.js"></script>
-<script src="<%= request.getContextPath() %>/main/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="<%= request.getContextPath() %>/main/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<!-- Owl Carousel -->
-<script src="<%= request.getContextPath() %>/main/vendor/owl-carousel/owl.carousel.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="<%= request.getContextPath() %>/main/js/custom.js"></script>
 </body>
 
 </html>
