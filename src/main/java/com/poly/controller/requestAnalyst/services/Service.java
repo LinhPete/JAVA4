@@ -1,6 +1,6 @@
 package com.poly.controller.requestAnalyst.services;
 
-import com.poly.modal.managers.XManager;
+import com.poly.model.managers.XManager;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.lang.reflect.InvocationTargetException;

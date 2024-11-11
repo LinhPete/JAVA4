@@ -1,8 +1,8 @@
 package com.poly.controller.requestAnalyst.services;
 
 import com.poly.controller.requestAnalyst.SessionContainer;
-import com.poly.modal.entities.User;
-import com.poly.modal.managers.UserManager;
+import com.poly.model.entities.User;
+import com.poly.model.managers.UserManager;
 import com.poly.controller.requestAnalyst.sessionAttributes.attributes.AdminUserAttributes;
 import com.poly.utils.XMessage;
 import jakarta.servlet.http.HttpServletRequest;

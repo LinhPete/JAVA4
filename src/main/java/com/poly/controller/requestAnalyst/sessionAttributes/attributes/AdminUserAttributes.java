@@ -1,8 +1,8 @@
 package com.poly.controller.requestAnalyst.sessionAttributes.attributes;
 
 import com.poly.controller.requestAnalyst.sessionAttributes.AttributeContainer;
-import com.poly.modal.entities.User;
-import com.poly.modal.managers.UserManager;
+import com.poly.model.entities.User;
+import com.poly.model.managers.UserManager;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.util.List;

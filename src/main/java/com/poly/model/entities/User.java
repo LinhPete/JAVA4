@@ -1,4 +1,4 @@
-package com.poly.modal.entities;
+package com.poly.model.entities;
 
 import jakarta.persistence.*;
 

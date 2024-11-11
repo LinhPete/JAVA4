@@ -9,12 +9,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
-<div class="container-fluid mt-4 p-5 row">
-    <div class="col-sm-8">
+<div class="container-fluid row">
+    <div class="col-md-8 p-4">
         <jsp:include page="user-list.jsp"/>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-md-4 p-4">
         <jsp:include page="user-form.jsp"/>
     </div>
 

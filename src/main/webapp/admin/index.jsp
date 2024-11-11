@@ -15,11 +15,12 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <c:choose>
     <c:when test="${sessionScope.get('currUser')==null||sessionScope.get('currUser').admin==true}">
-        <jsp:include page="layout.jsp"/>
+        <jsp:forward page="/admin/layout.jsp"/>
     </c:when>
     <c:when test="${sessionScope.get('currUser').admin==false}">
         <div class="container">
