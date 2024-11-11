@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Share Video</title>
+    <title>Favorite Videos</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -18,20 +18,28 @@
 
     <!-- Custom styles for this template-->
     <link href="<%= request.getContextPath() %>/main/css/osahan.css" rel="stylesheet">
+
 </head>
 <body>
-<div class="container mt-5 col-4 align-content-center">
-    <h3>Share Video</h3>
-    <form action="share" method="post">
-        <div class="mb-3">
-            <label for="email" class="form-label">Enter Email to Share</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+<div class="container mt-5">
+    <h3>Your Favorite Videos</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Example Card for Each Favorite Video -->
+        <div class="col">
+            <div class="card">
+                <img src="https://via.placeholder.com/320x180" class="card-img-top" alt="Video Thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Video Title 1</h5>
+                    <p class="card-text">Description of the video goes here.</p>
+                    <button class="btn btn-danger btn-sm">Dislike</button>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Share</button>
-    </form>
+    </div>
 </div>
 <!-- jQuery and Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
