@@ -2,12 +2,14 @@ package com.poly.controller.requestAnalyst.services;
 
 import com.poly.controller.requestAnalyst.SessionContainer;
 import com.poly.controller.requestAnalyst.sessionAttributes.attributes.AdminVideoAttributes;
+import com.poly.model.entities.User;
+import com.poly.model.entities.Video;
 import com.poly.model.managers.VideoManager;
 import jakarta.servlet.http.HttpServletRequest;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class VideoService extends Service{
+public class VideoService extends Service<VideoManager>{
     private AdminVideoAttributes adminVideoAttributes;
     public VideoService(HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         super(request, VideoManager.class);
@@ -42,6 +44,16 @@ public class VideoService extends Service{
     public void changePage(){
         int pageNumber = Integer.parseInt(request.getPathInfo().substring(1));
         setCurrentPage(pageNumber);
+    }
+
+    public void edit(){
+        String id = request.getPathInfo().substring(1);
+        setEditingVideo(manager.selectById(id));
+    }
+
+    private void setEditingVideo(Video video) {
+        adminVideoAttributes.setEditingVideo(video);
+        deployAttributes();
     }
 
     public void renderPageMap(){

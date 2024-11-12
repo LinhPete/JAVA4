@@ -13,12 +13,14 @@ public class AdminVideoAttributes {
     private Map<Integer, List<Video>> pageMap;
     private Integer currentPageNumber;
     private List<Video> currentPage;
+    private Video editingVideo;
 
     public AdminVideoAttributes(AttributeContainer attributeContainer) {
         this.attributeContainer = attributeContainer;
         VideoManager vm = new VideoManager();
         setPageMap(vm.selectAllInPages(5));
         setCurrentPageNumber(1);
+        setEditingVideo(null);
     }
 
     public void deploy(HttpServletRequest request) {
@@ -49,5 +51,13 @@ public class AdminVideoAttributes {
 
     public void setCurrentPage(List<Video> currentPage) {
         this.currentPage = currentPage;
+    }
+
+    public Video getEditingVideo() {
+        return editingVideo;
+    }
+
+    public void setEditingVideo(Video editingVideo) {
+        this.editingVideo = editingVideo;
     }
 }

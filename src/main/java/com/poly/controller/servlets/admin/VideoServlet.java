@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/admin/videos", "/admin/videos/page/*", "/admin/videos/edit/*",
+@WebServlet({"/admin/videos", "/admin/videos/page/*", "/admin/videos/edit/*", "/admin/videos/blank",
         "/admin/videos/create", "/admin/videos/update", "/admin/videos/delete",
         "/admin/videos/reset","/admin/videos/filter"})
 public class VideoServlet extends HttpServlet {
@@ -20,14 +20,19 @@ public class VideoServlet extends HttpServlet {
         SessionContainer container = SessionContainer.retrieve(req);
         VideoService videoService = container.getServiceContainer().getVideoService(req);
         String path = req.getServletPath();
-        if (path.endsWith("users")) {
+        if (path.endsWith("videos")) {
             videoService.loadPage();
+            req.setAttribute("view", "/admin/video/video-list.jsp");
         } else if(path.contains("filter")){
 
         } else if (path.contains("page")) {
             videoService.changePage();
+            req.setAttribute("view", "/admin/video/video-list.jsp");
+        } else if (path.contains("blank")){
+            req.setAttribute("view", "/admin/video/video-form.jsp");
         } else if (path.contains("edit")) {
-
+            videoService.edit();
+            req.setAttribute("view", "/admin/video/video-form.jsp");
         } else if (path.contains("create")) {
 
         } else if (path.contains("update")) {
@@ -37,7 +42,6 @@ public class VideoServlet extends HttpServlet {
         } else if (path.contains("reset")) {
 
         }
-        req.setAttribute("view", "/admin/video/video-list.jsp");
         req.getRequestDispatcher("/admin/index.jsp").forward(req, resp);
     }
 }
