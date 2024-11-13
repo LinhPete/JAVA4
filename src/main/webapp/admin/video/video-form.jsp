@@ -13,7 +13,7 @@
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/videos"/>
 
-<c:set var="video" value="${session_container.attributeContainer.adminVideoAttributes.editingVideo}"/>
+<c:set var="video" value="${session_container.attributeContainer.videoManageAttributes.editingVideo}"/>
 <div class="container">
     <h2 class="text-center">Chi tiết Video</h2>
     <div class="row">

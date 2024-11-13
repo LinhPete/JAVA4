@@ -39,7 +39,7 @@ public class XManager<T> {
         return list;
     }
 
-    protected Map<Integer, List<T>> convertListToPages(List<T> list, int size) {
+    public Map<Integer, List<T>> convertListToPages(List<T> list, int size) {
         Map<Integer, List<T>> map = new HashMap<>();
         int page = 1;
         for (int i = 0; i < list.size(); i += size) {

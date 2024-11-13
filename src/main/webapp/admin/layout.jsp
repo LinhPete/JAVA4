@@ -46,9 +46,15 @@
                 <i class="fa-solid fa-photo-film"></i> Videos
             </a>
             <ul class="dropdown-menu w-100 p-0 m-0 rounded-0">
-                <li><a class="dropdown-item w-100 p-2 ${view=='/admin/user/video-list.jsp'?'active':''}" href="${root}/videos">Manage Videos</a></li>
-                <li><a class="dropdown-item w-100 p-2 ${view=='/admin/user/video-form.jsp'?'active':''}" href="${root}/videos/blank">Video Detail</a></li>
+                <li><a class="dropdown-item w-100 p-2 ${view=='/admin/video/video-list.jsp'?'active':''}" href="${root}/videos">Manage Videos</a></li>
+                <li><a class="dropdown-item w-100 p-2 ${view=='/admin/video/video-form.jsp'?'active':''}" href="${root}/videos/blank">Video Detail</a></li>
             </ul>
+        </li>
+        <li class="nav-item w-100">
+            <a class="nav-link text-white w-100 p-3 rounded-0 ${view=='/admin/favorite.jsp'?'active':''}"
+               href="${root}/favorites">
+                <i class="fa-solid fa-heart"></i> Favorites
+            </a>
         </li>
     </div>
 

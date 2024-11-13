@@ -8,14 +8,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-public class AdminVideoAttributes {
+public class VideoManageAttributes {
     private final AttributeContainer attributeContainer;
     private Map<Integer, List<Video>> pageMap;
     private Integer currentPageNumber;
     private List<Video> currentPage;
     private Video editingVideo;
 
-    public AdminVideoAttributes(AttributeContainer attributeContainer) {
+    public VideoManageAttributes(AttributeContainer attributeContainer) {
         this.attributeContainer = attributeContainer;
         VideoManager vm = new VideoManager();
         setPageMap(vm.selectAllInPages(5));
@@ -24,7 +24,7 @@ public class AdminVideoAttributes {
     }
 
     public void deploy(HttpServletRequest request) {
-        attributeContainer.setAdminVideoAttributes(this);
+        attributeContainer.setVideoManageAttributes(this);
         attributeContainer.deploy(request);
     }
 

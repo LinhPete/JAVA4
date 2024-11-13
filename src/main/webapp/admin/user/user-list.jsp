@@ -13,11 +13,11 @@
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
 
-<c:set var="currPageNumber" value="${session_container.attributeContainer.adminUserAttributes.currentPageNumber}"/>
-<c:set var="currPage" value="${session_container.attributeContainer.adminUserAttributes.currentPage}"/>
-<c:set var="pages" value="${session_container.attributeContainer.adminUserAttributes.pageMap}"/>
-<c:set var="filterName" value="${session_container.attributeContainer.adminUserAttributes.filterName}"/>
-<c:set var="filterRole" value="${session_container.attributeContainer.adminUserAttributes.filterRole}"/>
+<c:set var="currPageNumber" value="${session_container.attributeContainer.userManageAttributes.currentPageNumber}"/>
+<c:set var="currPage" value="${session_container.attributeContainer.userManageAttributes.currentPage}"/>
+<c:set var="pages" value="${session_container.attributeContainer.userManageAttributes.pageMap}"/>
+<c:set var="filterName" value="${session_container.attributeContainer.userManageAttributes.filterName}"/>
+<c:set var="filterRole" value="${session_container.attributeContainer.userManageAttributes.filterRole}"/>
 
 <h2>Danh sách User</h2>
 <form action="${root}/filter" method="get">

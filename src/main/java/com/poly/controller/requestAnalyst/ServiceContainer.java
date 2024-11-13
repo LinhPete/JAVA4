@@ -29,7 +29,7 @@ public class ServiceContainer {
     }
 
     public FavoriteService getFavoriteService(HttpServletRequest request) {
-
+        favoriteService.setRequest(request);
         return favoriteService;
     }
 }

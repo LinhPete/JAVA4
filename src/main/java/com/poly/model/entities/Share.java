@@ -5,13 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="favorite")
-@NamedQueries({
-        @NamedQuery(name = "Favorite.getByUser", query = "SELECT f FROM Favorite f WHERE f.user.id = ?1"),
-        @NamedQuery(name = "Favorite.getLikesByVideo", query = "select count(f) from Favorite f where f.video.id = ?1"),
-        @NamedQuery(name = "Favorite.getLikesPerVideo", query = "select f.video, count(f) from Favorite f group by f.video.id"),
-})
-public class Favorite {
+@Table(name = "share")
+public class Share {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,17 +20,20 @@ public class Favorite {
     @JoinColumn(name = "VideoId")
     private Video video;
 
-    @Temporal(TemporalType.DATE)
-    private Date likedDate;
+    private String emails;
 
-    public Favorite() {
+    @Temporal(TemporalType.DATE)
+    private Date shareDate;
+
+    public Share() {
     }
 
-    public Favorite(Long id, User user, Video video, Date likedDate) {
+    public Share(Long id, User user, Video video, String emails, Date shareDate) {
         this.id = id;
         this.user = user;
         this.video = video;
-        this.likedDate = likedDate;
+        this.emails = emails;
+        this.shareDate = shareDate;
     }
 
     public void setId(Long id) {
@@ -62,16 +60,19 @@ public class Favorite {
         this.video = video;
     }
 
-    public Date getLikedDate() {
-        return likedDate;
+    public String getEmails() {
+        return emails;
     }
 
-    public void setLikedDate(Date likedDate) {
-        this.likedDate = likedDate;
+    public void setEmails(String emails) {
+        this.emails = emails;
     }
 
-    @Override
-    public String toString() {
-        return "Id: "+id+"\nUser: "+user.getId()+"\nVideo: "+video.getId()+"\nLikedDate: "+likedDate+"\n";
+    public Date getShareDate() {
+        return shareDate;
+    }
+
+    public void setShareDate(Date shareDate) {
+        this.shareDate = shareDate;
     }
 }
