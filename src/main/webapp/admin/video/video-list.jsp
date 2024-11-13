@@ -14,9 +14,9 @@
 <c:set var="root" value="${parentRoot}/videos"/>
 <c:set var="imgPath" value="${parentRoot}/"/>
 
-<c:set var="currPageNumber" value="${session_container.attributeContainer.adminVideoAttributes.currentPageNumber}"/>
-<c:set var="currPage" value="${session_container.attributeContainer.adminVideoAttributes.currentPage}"/>
-<c:set var="pages" value="${session_container.attributeContainer.adminVideoAttributes.pageMap}"/>
+<c:set var="currPageNumber" value="${session_container.attributeContainer.videoManageAttributes.currentPageNumber}"/>
+<c:set var="currPage" value="${session_container.attributeContainer.videoManageAttributes.currentPage}"/>
+<c:set var="pages" value="${session_container.attributeContainer.videoManageAttributes.pageMap}"/>
 <div class="container">
     <table class="table">
         <thead>

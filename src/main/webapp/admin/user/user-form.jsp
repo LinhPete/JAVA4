@@ -13,7 +13,7 @@
 <c:url var="parentRoot" value="/admin"/>
 <c:set var="root" value="${parentRoot}/users"/>
 
-<c:set var="user" value="${session_container.attributeContainer.adminUserAttributes.editingUser}"/>
+<c:set var="user" value="${session_container.attributeContainer.userManageAttributes.editingUser}"/>
 <h2 class="text-center">Chi tiết người dùng</h2>
 <form method="post">
     <div class="my-3">

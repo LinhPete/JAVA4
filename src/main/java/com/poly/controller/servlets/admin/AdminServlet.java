@@ -9,9 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/admin/dashboard",
-
-        "/admin/favorites"})
+@WebServlet({"/admin/dashboard"})
 public class AdminServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

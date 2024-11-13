@@ -1,9 +1,9 @@
 package com.poly.controller.requestAnalyst.services;
 
 import com.poly.controller.requestAnalyst.SessionContainer;
+import com.poly.controller.requestAnalyst.sessionAttributes.attributes.UserManageAttributes;
 import com.poly.model.entities.User;
 import com.poly.model.managers.UserManager;
-import com.poly.controller.requestAnalyst.sessionAttributes.attributes.AdminUserAttributes;
 import com.poly.utils.XMessage;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
@@ -11,22 +11,22 @@ import org.apache.commons.beanutils.BeanUtils;
 import java.lang.reflect.InvocationTargetException;
 
 public class UserService extends Service<UserManager> {
-    private AdminUserAttributes sessionAttributes;
+    private UserManageAttributes umAttributes;
 
     public UserService(HttpServletRequest request) throws InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(request, UserManager.class);
-        sessionAttributes = retrieveAttributes();
+        umAttributes = retrieveAttributes();
     }
 
     @Override
     public void setRequest(HttpServletRequest request) {
         super.setRequest(request);
-        sessionAttributes = retrieveAttributes();
+        umAttributes = retrieveAttributes();
     }
 
     public void loadPage(){
-        sessionAttributes.setFilterName(null);
-        sessionAttributes.setFilterRole(null);
+        umAttributes.setFilterName(null);
+        umAttributes.setFilterRole(null);
         renderPageMap();
         setCurrentPage(1);
     }
@@ -36,14 +36,14 @@ public class UserService extends Service<UserManager> {
         if(name!=null && name.isBlank()){
             name = null;
         }
-        sessionAttributes.setFilterName(name);
+        umAttributes.setFilterName(name);
         String role = request.getParameter("filter_role");
         if(!role.equalsIgnoreCase("null")){
-            sessionAttributes.setFilterRole(Boolean.parseBoolean(role));
+            umAttributes.setFilterRole(Boolean.parseBoolean(role));
         } else {
-            sessionAttributes.setFilterRole(null);
+            umAttributes.setFilterRole(null);
         }
-        sessionAttributes.deploy(request);
+        umAttributes.deploy(request);
         renderPageMap();
         setCurrentPage(1);
     }
@@ -155,8 +155,8 @@ public class UserService extends Service<UserManager> {
     }
 
     public void renderPageMap(){
-        String filterName = sessionAttributes.getFilterName();
-        Boolean filterRole = sessionAttributes.getFilterRole();
+        String filterName = umAttributes.getFilterName();
+        Boolean filterRole = umAttributes.getFilterRole();
         if(filterName == null && filterRole == null) {
             renderAllPageMap();
         } else{
@@ -165,42 +165,42 @@ public class UserService extends Service<UserManager> {
     }
 
     private void renderAllPageMap() {
-        sessionAttributes.setPageMap(manager.selectAllInPages(5));
+        umAttributes.setPageMap(manager.selectAllInPages(5));
         deployAttributes();
     }
 
     private void renderFilteredPageMap(String name, Boolean role) {
-        sessionAttributes.setPageMap(manager.getFilteredPageMap(5, name, role));
+        umAttributes.setPageMap(manager.getFilteredPageMap(5, name, role));
         deployAttributes();
     }
 
     private void setCurrentPage(int pageNumber) {
-        if(pageNumber>1 && sessionAttributes.getPageMap().get(pageNumber) == null) {
+        if(pageNumber>1 && umAttributes.getPageMap().get(pageNumber) == null) {
             pageNumber--;
         }
-        sessionAttributes.setCurrentPageNumber(pageNumber);
+        umAttributes.setCurrentPageNumber(pageNumber);
         deployAttributes();
     }
 
     private int getCurrentPageNumber() {
-        return sessionAttributes.getCurrentPageNumber();
+        return umAttributes.getCurrentPageNumber();
     }
 
     private void setEditingUser(User user) {
-        sessionAttributes.setEditingUser(user);
+        umAttributes.setEditingUser(user);
         deployAttributes();
     }
 
     private void deployAttributes(){
-        sessionAttributes.deploy(request);
+        umAttributes.deploy(request);
     }
 
-    private AdminUserAttributes retrieveAttributes() {
+    private UserManageAttributes retrieveAttributes() {
         SessionContainer container = SessionContainer.retrieve(request);
         if(container == null) {
             return null;
         }
-        return container.getAttributeContainer().getAdminUserAttributes();
+        return container.getAttributeContainer().getUserManageAttributes();
     }
 
 }

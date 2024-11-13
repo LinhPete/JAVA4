@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
-public class AdminUserAttributes {
+public class UserManageAttributes {
     private final AttributeContainer attributeContainer;
     private Map<Integer, List<User>> pageMap;
     private Integer currentPageNumber;
@@ -17,7 +17,7 @@ public class AdminUserAttributes {
     private String filterName;
     private Boolean filterRole;
 
-    public AdminUserAttributes(AttributeContainer attributeContainer) {
+    public UserManageAttributes(AttributeContainer attributeContainer) {
         this.attributeContainer = attributeContainer;
         UserManager userManager = new UserManager();
         setPageMap(userManager.selectAllInPages(5));
@@ -28,7 +28,7 @@ public class AdminUserAttributes {
     }
 
     public void deploy(HttpServletRequest request) {
-        attributeContainer.setAdminUserAttributes(this);
+        attributeContainer.setUserManageAttributes(this);
         attributeContainer.deploy(request);
     }
 

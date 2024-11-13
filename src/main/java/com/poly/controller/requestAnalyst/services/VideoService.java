@@ -1,8 +1,7 @@
 package com.poly.controller.requestAnalyst.services;
 
 import com.poly.controller.requestAnalyst.SessionContainer;
-import com.poly.controller.requestAnalyst.sessionAttributes.attributes.AdminVideoAttributes;
-import com.poly.model.entities.User;
+import com.poly.controller.requestAnalyst.sessionAttributes.attributes.VideoManageAttributes;
 import com.poly.model.entities.Video;
 import com.poly.model.managers.VideoManager;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,28 +9,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 
 public class VideoService extends Service<VideoManager>{
-    private AdminVideoAttributes adminVideoAttributes;
+    private VideoManageAttributes vmAttributes;
     public VideoService(HttpServletRequest request) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         super(request, VideoManager.class);
-        adminVideoAttributes = retrieveAttributes();
+        vmAttributes = retrieveAttributes();
     }
 
     @Override
     public void setRequest(HttpServletRequest request) {
         super.setRequest(request);
-        adminVideoAttributes = retrieveAttributes();
+        vmAttributes = retrieveAttributes();
     }
 
     private void deployAttributes(){
-        adminVideoAttributes.deploy(request);
+        vmAttributes.deploy(request);
     }
 
-    private AdminVideoAttributes retrieveAttributes() {
+    private VideoManageAttributes retrieveAttributes() {
         SessionContainer container = SessionContainer.retrieve(request);
         if(container == null) {
             return null;
         }
-        return container.getAttributeContainer().getAdminVideoAttributes();
+        return container.getAttributeContainer().getVideoManageAttributes();
     }
 
     public void loadPage(){
@@ -52,7 +51,7 @@ public class VideoService extends Service<VideoManager>{
     }
 
     private void setEditingVideo(Video video) {
-        adminVideoAttributes.setEditingVideo(video);
+        vmAttributes.setEditingVideo(video);
         deployAttributes();
     }
 
@@ -67,7 +66,7 @@ public class VideoService extends Service<VideoManager>{
     }
 
     private void renderAllPageMap() {
-        adminVideoAttributes.setPageMap(manager.selectAllInPages(5));
+        vmAttributes.setPageMap(manager.selectAllInPages(5));
         deployAttributes();
     }
 
@@ -77,14 +76,14 @@ public class VideoService extends Service<VideoManager>{
 //    }
 
     private void setCurrentPage(int pageNumber) {
-        if(pageNumber>1 && adminVideoAttributes.getPageMap().get(pageNumber) == null) {
+        if(pageNumber>1 && vmAttributes.getPageMap().get(pageNumber) == null) {
             pageNumber--;
         }
-        adminVideoAttributes.setCurrentPageNumber(pageNumber);
+        vmAttributes.setCurrentPageNumber(pageNumber);
         deployAttributes();
     }
 
     private int getCurrentPageNumber() {
-        return adminVideoAttributes.getCurrentPageNumber();
+        return vmAttributes.getCurrentPageNumber();
     }
 }
