@@ -10,16 +10,13 @@ import java.util.Map;
 
 public class VideoManageAttributes {
     private final AttributeContainer attributeContainer;
-    private Map<Integer, List<Video>> pageMap;
-    private Integer currentPageNumber;
-    private List<Video> currentPage;
+    private List<Video> listVideos;
     private Video editingVideo;
 
     public VideoManageAttributes(AttributeContainer attributeContainer) {
         this.attributeContainer = attributeContainer;
         VideoManager vm = new VideoManager();
-        setPageMap(vm.selectAllInPages(5));
-        setCurrentPageNumber(1);
+        setListVideos(vm.selectAll());
         setEditingVideo(null);
     }
 
@@ -28,29 +25,12 @@ public class VideoManageAttributes {
         attributeContainer.deploy(request);
     }
 
-    public Map<Integer, List<Video>> getPageMap() {
-        return pageMap;
+    public List<Video> getListVideos() {
+        return listVideos;
     }
 
-    public void setPageMap(Map<Integer, List<Video>> pageMap) {
-        this.pageMap = pageMap;
-    }
-
-    public Integer getCurrentPageNumber() {
-        return currentPageNumber;
-    }
-
-    public void setCurrentPageNumber(Integer currentPageNumber) {
-        this.currentPageNumber = currentPageNumber;
-        setCurrentPage(pageMap.get(currentPageNumber));
-    }
-
-    public List<Video> getCurrentPage() {
-        return currentPage;
-    }
-
-    public void setCurrentPage(List<Video> currentPage) {
-        this.currentPage = currentPage;
+    public void setListVideos(List<Video> listVideos) {
+        this.listVideos = listVideos;
     }
 
     public Video getEditingVideo() {

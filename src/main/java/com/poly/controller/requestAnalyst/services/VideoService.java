@@ -37,12 +37,6 @@ public class VideoService extends Service<VideoManager>{
 //        adminVideoAttributes.setFilterName(null);
 //        adminVideoAttributes.setFilterRole(null);
         renderPageMap();
-        setCurrentPage(1);
-    }
-
-    public void changePage(){
-        int pageNumber = Integer.parseInt(request.getPathInfo().substring(1));
-        setCurrentPage(pageNumber);
     }
 
     public void edit(){
@@ -66,7 +60,7 @@ public class VideoService extends Service<VideoManager>{
     }
 
     private void renderAllPageMap() {
-        vmAttributes.setPageMap(manager.selectAllInPages(5));
+        vmAttributes.setListVideos(manager.selectAll());
         deployAttributes();
     }
 
@@ -75,15 +69,4 @@ public class VideoService extends Service<VideoManager>{
 //        deployAttributes();
 //    }
 
-    private void setCurrentPage(int pageNumber) {
-        if(pageNumber>1 && vmAttributes.getPageMap().get(pageNumber) == null) {
-            pageNumber--;
-        }
-        vmAttributes.setCurrentPageNumber(pageNumber);
-        deployAttributes();
-    }
-
-    private int getCurrentPageNumber() {
-        return vmAttributes.getCurrentPageNumber();
-    }
 }

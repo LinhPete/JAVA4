@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/admin/videos", "/admin/videos/page/*", "/admin/videos/edit/*", "/admin/videos/blank",
+@WebServlet({"/admin/videos", "/admin/videos/edit/*", "/admin/videos/blank",
         "/admin/videos/create", "/admin/videos/update", "/admin/videos/delete",
         "/admin/videos/reset","/admin/videos/filter"})
 public class VideoServlet extends HttpServlet {
@@ -25,9 +25,6 @@ public class VideoServlet extends HttpServlet {
             req.setAttribute("view", "/admin/video/video-list.jsp");
         } else if(path.contains("filter")){
 
-        } else if (path.contains("page")) {
-            videoService.changePage();
-            req.setAttribute("view", "/admin/video/video-list.jsp");
         } else if (path.contains("blank")){
             req.setAttribute("view", "/admin/video/video-form.jsp");
         } else if (path.contains("edit")) {
