@@ -14,69 +14,34 @@
 <c:set var="root" value="${parentRoot}/videos"/>
 <c:set var="imgPath" value="${parentRoot}/"/>
 
-<c:set var="currPageNumber" value="${session_container.attributeContainer.videoManageAttributes.currentPageNumber}"/>
-<c:set var="currPage" value="${session_container.attributeContainer.videoManageAttributes.currentPage}"/>
-<c:set var="pages" value="${session_container.attributeContainer.videoManageAttributes.pageMap}"/>
+<c:set var="videos" value="${session_container.attributeContainer.videoManageAttributes.listVideos}"/>
 <div class="container">
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Mã Video</th>
-            <th>Poster</th>
-            <th>Title</th>
-            <th>Views</th>
-            <th>Likes</th>
-            <th>PostedDate</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="index" begin="0" end="4" step="1">
-            <c:choose>
-                <c:when test="${currPage!=null && index<currPage.size()}">
-                    <tr>
-                        <td>${currPage.get(index).id}</td>
-                        <td>
-                            <img src="/Java4${currPage.get(index).posterPath}" alt="${currPage.get(index).title}" width="160px" height="100px">
-                        </td>
-                        <td>${currPage.get(index).title}</td>
-                        <td>${currPage.get(index).views}</td>
-                        <td>${currPage.get(index).likes}</td>
-                        <td>${currPage.get(index).postedDate}</td>
-                        <td><a class="btn btn-outline-primary" href="${root}/edit/${currPage.get(index).id}">Edit</a></td>
-                    </tr>
-                </c:when>
-                <c:otherwise>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><a class="btn btn-outline-primary" href="#" style="visibility: hidden">Edit</a></td>
-                    </tr>
-                </c:otherwise>
-            </c:choose>
+    <h2>Danh sách Video</h2>
+    <div class="row row-cols-5 p-5">
+        <c:forEach var="video" items="${videos}" varStatus="vs">
+            <div class="col p-2">
+                <div class="card" style="height: 250px">
+                    <img src="/Java4${video.posterPath}" alt="${video.poster}" class="card-img-top"
+                         style="height: 141px">
+                    <div class="card-body">
+                        <h4 class="card-title">${video.title}</h4>
+                        <p class="card-text"><span class="mr-3"><i
+                                class="fa-solid fa-eye"></i> ${video.views}</span>
+                            <span><i class="fa-solid fa-thumbs-up"></i> ${video.likes}</span></p>
+                    </div>
+                    <a href="${root}/edit/${video.id}"
+                       class="text-center pt-5 text-white"
+                       style="
+                       display: block;
+                       position: absolute;
+                       top: 0;
+                       left: 0;
+                       width: 100%;
+                       height: 100%;">
+                        <i class="fa-regular fa-circle-play" style="font-size: 2.5rem"></i>
+                    </a>
+                </div>
+            </div>
         </c:forEach>
-        </tbody>
-    </table>
-    <ul class="pagination justify-content-center">
-        <li class="page-item ${currPageNumber==1?'disabled':''}"><a class="page-link"
-                                                                    href="${root}/page/${currPageNumber-1}">Previous</a>
-        </li>
-        <c:if test="${pages.keySet()!=null}">
-            <c:forEach items="${pages.keySet()}" varStatus="vs">
-                <li class="page-item ${vs.count==currPageNumber?'active':''}"><a class="page-link"
-                                                                                 href="${root}/page/${vs.count}">${vs.count}</a>
-                </li>
-            </c:forEach>
-        </c:if>
-        <c:if test="${pages.keySet()==null}">
-            <li class="page-item active"><a class="page-link"
-                                            href="${root}/page/1">1</a>
-            </li>
-        </c:if>
-        <li class="page-item ${currPageNumber==pages.size()||pages.size()==0?'disabled':''}"><a
-                class="page-link"
-                href="${root}/page/${currPageNumber+1}">Next</a>
-        </li>
-    </ul>
+    </div>
 </div>
